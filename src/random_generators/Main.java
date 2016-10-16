@@ -8,7 +8,11 @@ public class Main {
         Random random = new Random();
         Built_in_gen.getBit();
         Lehmer_gen.getBit();
+        L20_gen.getBits();
+        System.out.println();
+        L89_gen.getBits();
 
+        System.out.println();
         System.out.println("Geffe_gen");
         Geffe_gen l9 = new Geffe_gen(27, 9);
         Geffe_gen l10 = new Geffe_gen(9, 10);
@@ -29,6 +33,7 @@ public class Main {
         Wolfram_gen.getBit();
         Library_gen.getBits();
         BlumMicali_gen.bitVersion();
+        BlumMicali_gen.byteVersion();
         BlumBlumShub_gen.bitVersion();
         BlumBlumShub_gen.byteVersion();
 

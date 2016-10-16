@@ -10,7 +10,7 @@ public class Library_gen {
 
     static void getBits() {
         System.out.println("\nLibrary_gen");
-        try (FileReader fr = new FileReader("C:\\Users\\fraps\\IdeaProjects\\AsymCryptoLab1\\src\\source_txt\\source.txt")) {
+        try (FileReader fr = new FileReader("C:\\Users\\Dima\\IdeaProjects\\AsymCryptoLab1\\src\\source_txt\\source.txt")) {
             int c;
             byte b;
             char a;

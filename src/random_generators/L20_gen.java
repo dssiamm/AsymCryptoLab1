@@ -1,37 +1,40 @@
 package random_generators;
 
+import java.util.Random;
+
 public class L20_gen {
-    private int value, registercoeficientt, length;
+    private static int length = 20;
+    private static boolean[] startValue = new boolean[length];
+    private static boolean temp;
+    private static final int bitsCount = 200;
+    private static Random random = new Random();
 
-    L20_gen(int registercoeficientt, int length) {
-        this.length = length;
-        this.registercoeficientt = registercoeficientt;
+    static void getBits() {
+        for(int i = 0; i < length; i++)
+            startValue[i] = random.nextBoolean();
+
+        System.out.println("L20_gen");
+        for(int i = 0; i < bitsCount; i ++) {
+            temp = startValue[length - 1] ^ startValue[length - 12] ^ startValue[length - 16] ^ startValue[length - 18];
+            if(temp)
+                System.out.print("1");
+            else
+                System.out.print("0");
+            startValue = rightShift(startValue, temp);
+        }
+
+
+
     }
 
-    boolean registerStep(){
-        boolean res;
-        if( (this.value & 1) == 0)
-            res = false;
+    static boolean[] rightShift(boolean[] mass, boolean res) {
+        for(int i = length - 1; i > 0; i--)
+            mass[i] = mass[i-1];
+        if(res)
+            mass[0] = true;
         else
-            res = true;
-        int temp = this.value & this.registercoeficientt;
-        this.value = this.value >>> 1;
-        if(Integer.bitCount(temp) % 2 == 1)
-            this.value = this.value + pow(2, this.length - 2);
-        return res;
+            mass[0] = false;
+        return mass;
     }
 
-    int pow(int x, int y){
-        int res = x;
-        for(int i = 0; i < y; i++)
-            res *= x;
-        return res;
-    }
-
-    void setRegisterValues(int values){
-        this.value = values;
-    }
-
-    void showRegValues(){
-        System.out.println(Integer.toBinaryString(this.value));
-    }}
+}

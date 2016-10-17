@@ -1,17 +1,19 @@
 package random_generators;
 
-
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 
 class Wolfram_gen {
 
-    private static final int bitsCount = 200;
+    private static final int bitsCount = 1000000;
     private static Random random = new Random();
     private static long r, rl, rr, temp;
 
 
-    static void getBit() {
-        System.out.println("\nWolfram_gen");
+    static void getBit() throws IOException{
+        FileWriter wr = new FileWriter("/home/dssiam/IdeaProjects/AsymCryptoLab1/src/source_txt/wolf.txt");
+        System.out.println("Wolfram_gen");
         r = random.nextLong() % 4294967296l;
             if (r <= 0) {
                 r += 1;
@@ -19,10 +21,12 @@ class Wolfram_gen {
             }
 
         for(int i = 0; i < bitsCount; i++){
+            if(i % 1000 == 0)
+                wr.write("\n");
             if(r % 2 == 1)
-                System.out.print("1");
+                wr.write("1");
             else
-                System.out.print("0");
+                wr.write("0");
 
             rr = r;
             rl = r;
@@ -33,6 +37,7 @@ class Wolfram_gen {
             temp = Long.parseLong(or(r, rl), 2);
             r = Long.parseLong(xor(temp, rr), 2);
         }
+        wr.close();
     }
 
     static String or(long x, long y) {

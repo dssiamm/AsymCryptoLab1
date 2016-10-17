@@ -1,22 +1,26 @@
 package random_generators;
 
 
+import java.io.*;
 import java.util.Random;
 
 class Built_in_gen {
-    private static final int bitsCount = 200;
+    private static final int bitsCount = 1000000;
     private static Random random = new Random();
 
-    static void getBit() {
+    static void getBit() throws IOException{
+        FileWriter wr = new FileWriter("//home//dssiam//IdeaProjects//AsymCryptoLab1//src//source_txt//built_in_gen.txt");
         System.out.println("Built_in_gen");
         for(int i = 0; i < bitsCount; i++) {
+            if(i % 1000 == 0)
+                wr.write("\n");
             if (random.nextBoolean()) {
-                System.out.print("1");
+                wr.write("1");
             } else {
-                System.out.print("0");
+                wr.write("0");
             }
         }
-        System.out.println();
+        wr.close();
     }
 
 }

@@ -1,5 +1,7 @@
 package random_generators;
 
+import tests.QuabilityTest;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
@@ -11,8 +13,7 @@ public class Main {
 
         try {
             Built_in_gen.getBit();
-            //BlumMicali_gen.bitVersion();
-            //BlumMicali_gen.byteVersion();
+            QuabilityTest.testQuability("/home/dssiam/IdeaProjects/AsymCryptoLab1/src/source_txt/built_in_gen.txt");
             BlumBlumShub_gen.bitVersion();
             BlumBlumShub_gen.byteVersion();
             Wolfram_gen.getBit();
@@ -20,6 +21,8 @@ public class Main {
             Lehmer_gen.getBit();
             L20_gen.getBits();
             L89_gen.getBits();
+            //BlumMicali_gen.bitVersion();
+            //BlumMicali_gen.byteVersion();
         }   catch (IOException e) {
             e.printStackTrace();
         }

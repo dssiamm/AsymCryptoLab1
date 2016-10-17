@@ -7,7 +7,7 @@ import java.math.BigInteger;
 import java.util.Random;
 
 public class BlumMicali_gen {
-    private static final int bitsCount = 100;
+    private static final int bitsCount = 1000000;
     private static Random random = new Random();
     private static BigInteger T;
     private static final BigInteger byteConst = new BigInteger("256", 10);
@@ -16,9 +16,11 @@ public class BlumMicali_gen {
 
     static void bitVersion() throws IOException{
         FileWriter wr = new FileWriter("/home/dssiam/IdeaProjects/AsymCryptoLab1/src/source_txt/blummicali_bit.txt");
-        System.out.println("\nBlumMicali_gen");
+        System.out.println("BlumMicali_gen");
         BigInteger pValue = new BigInteger(pValueString, 16);
         BigInteger aValue = new BigInteger(aValueString, 16);
+        BigInteger resultValue = pValue.subtract(BigInteger.ONE).divide(BigInteger.ONE.add(BigInteger.ONE));
+        String tempV = "";
 
         long temp;
         temp = random.nextLong();
@@ -29,10 +31,14 @@ public class BlumMicali_gen {
 
         T = BigInteger.valueOf(temp);
         for(int i = 0; i < bitsCount; i++) {
-            if (T.compareTo(pValue.subtract(BigInteger.ONE).divide(BigInteger.ONE.add(BigInteger.ONE))) == -1)
-                wr.write("1");
+            if(i % 1000 == 0) {
+                wr.write(tempV + "\n");
+                tempV = "";
+            }
+            if (T.compareTo(resultValue) == -1)
+                tempV += "1";
             else
-                wr.write("0");
+                tempV += "0";
 
             T = aValue.modPow(T, pValue);
         }
@@ -41,7 +47,7 @@ public class BlumMicali_gen {
 
     static void byteVersion() throws IOException{
         FileWriter wr = new FileWriter("/home/dssiam/IdeaProjects/AsymCryptoLab1/src/source_txt/blummicali_byte.txt");
-        System.out.println("\nBlumMicali_gen");
+        System.out.println("BlumMicali_gen");
         BigInteger pValue = new BigInteger(pValueString, 16);
         BigInteger aValue = new BigInteger(aValueString, 16);
         BigInteger kValue = BigInteger.ZERO;
@@ -55,20 +61,20 @@ public class BlumMicali_gen {
 
         T = BigInteger.valueOf(temp);
         for(int i = 0; i < bitsCount; i++) {
+            if(i % 1000 == 0)
+                wr.write("\n");
             T = aValue.modPow(T, pValue);
-            for(int j = 1; j <= 256; j++){
+            for(int j = 1; j <= 256; j++) {
                 if(kValue.compareTo(byteConst.multiply(T).divide(pValue.subtract(BigInteger.ONE))) == -1 &&
                         byteConst.multiply(T).divide(pValue.subtract(BigInteger.ONE)).compareTo(kValue.add(BigInteger.ONE)) == 0 ||
                                 byteConst.multiply(T).divide(pValue.subtract(BigInteger.ONE)).compareTo(kValue.add(BigInteger.ONE)) == -1) {
-                    wr.write(j + " ");
-                    System.out.print(kValue + " ");
+                    wr.write(kValue + " ");
                     kValue = BigInteger.ZERO;
                     break;
                 }
-                    kValue = kValue.add(BigInteger.ONE);
+                kValue = kValue.add(BigInteger.ONE);
             }
-    wr.close();
-
         }
+        wr.close();
     }
 }

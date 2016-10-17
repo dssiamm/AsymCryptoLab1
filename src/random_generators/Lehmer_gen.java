@@ -25,19 +25,20 @@ class Lehmer_gen {
 
         System.out.println("Lehmer_gen(high)");
         for(int i = 0; i < bitsCount; i++) {
-            if(i % 1000 == 0)
+            if(i % 125 == 0)
                 wr.write("\n");
             wr.write(x.toString(2).substring(0, 8));
             x = x.multiply(a);
             x = x.add(c);
             x = x.mod(m);
         }
-
+        wr.close();
         x = BigInteger.valueOf(xl);
 
+        wr = new FileWriter("/home/dssiam/IdeaProjects/AsymCryptoLab1/src/source_txt/lehmer_low.txt");
         System.out.println("Lehmer_gen(low)");
         for(int i = 0; i < bitsCount; i++) {
-            if(i % 1000 == 0)
+            if(i % 125 == 0)
                 wr.write("\n");
             wr.write(x.toString(2).substring(x.bitLength() - 8, x.bitLength()));
             x = x.multiply(a);

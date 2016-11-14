@@ -9,7 +9,7 @@ class Built_in_gen {
     private static Random random = new Random();
 
     static void getBit() throws IOException{
-        FileWriter wr = new FileWriter("//home//dssiam//IdeaProjects//AsymCryptoLab1//src//source_txt//built_in_gen.txt");
+        FileWriter wr = new FileWriter("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/built_in_gen.txt");
         System.out.println("Built_in_gen");
         for(int i = 0; i < bitsCount; i++) {
             if(i % 1000 == 0)

@@ -15,7 +15,7 @@ public class BlumMicali_gen {
     private static String aValueString = "5B88C41246790891C095E2878880342E88C79974303BD0400B090FE38A688356";
 
     static void bitVersion() throws IOException{
-        FileWriter wr = new FileWriter("/home/dssiam/IdeaProjects/AsymCryptoLab1/src/source_txt/blummicali_bit.txt");
+        FileWriter wr = new FileWriter("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/blummicali_bit.txt");
         System.out.println("BlumMicali_gen");
         BigInteger pValue = new BigInteger(pValueString, 16);
         BigInteger aValue = new BigInteger(aValueString, 16);
@@ -46,7 +46,7 @@ public class BlumMicali_gen {
     }
 
     static void byteVersion() throws IOException{
-        FileWriter wr = new FileWriter("/home/dssiam/IdeaProjects/AsymCryptoLab1/src/source_txt/blummicali_byte.txt");
+        FileWriter wr = new FileWriter("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/blummicali_byte.txt");
         System.out.println("BlumMicali_gen");
         BigInteger pValue = new BigInteger(pValueString, 16);
         BigInteger aValue = new BigInteger(aValueString, 16);

@@ -12,7 +12,7 @@ public class L20_gen {
     private static Random random = new Random();
 
     static void getBits() throws IOException{
-        FileWriter wr = new FileWriter("/home/dssiam/IdeaProjects/AsymCryptoLab1/src/source_txt/l20.txt");
+        FileWriter wr = new FileWriter("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/l20.txt");
         for(int i = 0; i < length; i++)
             startValue[i] = random.nextBoolean();
 

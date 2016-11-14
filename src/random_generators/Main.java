@@ -8,19 +8,33 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) throws IOException{
-        FileWriter wr = new FileWriter("/home/dssiam/IdeaProjects/AsymCryptoLab1/src/source_txt/geffe.txt");
+        FileWriter wr = new FileWriter("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/geffe.txt");
         Random random = new Random();
 
         try {
             Built_in_gen.getBit();
-            QuabilityTest.testQuability("/home/dssiam/IdeaProjects/AsymCryptoLab1/src/source_txt/built_in_gen.txt");
+            QuabilityTest.testQuability("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/built_in_gen.txt");
+
             BlumBlumShub_gen.bitVersion();
+            QuabilityTest.testQuability("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/blumblum_bit.txt");
+
             BlumBlumShub_gen.byteVersion();
             Wolfram_gen.getBit();
-            Library_gen.getBits();
+            QuabilityTest.testQuability("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/wolf.txt");
+
+            //Library_gen.getBits();
+            //QuabilityTest.testQuability("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/library.txt");
+
             Lehmer_gen.getBit();
+            QuabilityTest.testQuability("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/lehmer.txt");
+            QuabilityTest.testQuability("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/lehmer_low.txt");
+
             L20_gen.getBits();
+            QuabilityTest.testQuability("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/l20.txt");
+
             L89_gen.getBits();
+            QuabilityTest.testQuability("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/l89.txt");
+
             //BlumMicali_gen.bitVersion();
             //BlumMicali_gen.byteVersion();
         }   catch (IOException e) {
@@ -47,6 +61,7 @@ public class Main {
         }
         wr.close();
 
+        QuabilityTest.testQuability("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/geffe.txt");
 
     }
 }

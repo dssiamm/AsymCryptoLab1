@@ -14,7 +14,7 @@ public class BlumBlumShub_gen {
     private static String qValueString = "425D2B9BFDB25B9CF6C416CC6E37B59C1F";
 
     static void bitVersion() throws IOException{
-        FileWriter wr = new FileWriter("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/blumblum_bit.txt");
+        FileWriter wr = new FileWriter("blumblum_bit.txt");
         System.out.println("BlumBlumShub_gen");
         BigInteger pValue = new BigInteger(pValueString, 16);
         BigInteger qValue = new BigInteger(qValueString, 16);
@@ -43,7 +43,7 @@ public class BlumBlumShub_gen {
     }
 
     static void byteVersion() throws IOException {
-        FileWriter wr = new FileWriter("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/blumblum_byte.txt");
+        FileWriter wr = new FileWriter("blumblum_byte.txt");
         System.out.println("BlumBlumShub_gen");
         BigInteger pValue = new BigInteger(pValueString, 16);
         BigInteger qValue = new BigInteger(qValueString, 16);

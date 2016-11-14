@@ -12,7 +12,7 @@ class Wolfram_gen {
 
 
     static void getBit() throws IOException{
-        FileWriter wr = new FileWriter("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/wolf.txt");
+        FileWriter wr = new FileWriter("wolf.txt");
         System.out.println("Wolfram_gen");
         r = random.nextLong() % 4294967296l;
             if (r <= 0) {

@@ -13,13 +13,13 @@ class Lehmer_gen {
     private static long xl;
 
     static void getBit() throws IOException{
-        FileWriter wr = new FileWriter("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/lehmer.txt");
+        FileWriter wr = new FileWriter("lehmer.txt");
         xl = random.nextLong();
         if(xl <= 0)
-            xl *= -1;
+            xl = -xl;
 
-        m = BigInteger.valueOf(4294967296l);
         x = BigInteger.valueOf(xl);
+        m = BigInteger.valueOf(4294967296l);
         a = BigInteger.valueOf(65537);
         c = BigInteger.valueOf(119);
 
@@ -35,7 +35,7 @@ class Lehmer_gen {
         wr.close();
         x = BigInteger.valueOf(xl);
 
-        wr = new FileWriter("/home/dssiam/workspace/IntelliJ_IDEA_projects/AsymCryptoLab1/src/source_txt/lehmer_low.txt");
+        wr = new FileWriter("lehmer_low.txt");
         System.out.println("Lehmer_gen(low)");
         for(int i = 0; i < bitsCount; i++) {
             if(i % 125 == 0)

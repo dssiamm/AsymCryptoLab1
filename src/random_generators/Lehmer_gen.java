@@ -25,25 +25,26 @@ class Lehmer_gen {
 
         System.out.println("Lehmer_gen(high)");
         for(int i = 0; i < bitsCount; i++) {
-            if(i % 125 == 0)
-                wr.write("\n");
-            wr.write(x.toString(2).substring(0, 8));
             x = x.multiply(a);
             x = x.add(c);
             x = x.mod(m);
+            if(i % 125 == 0)
+                wr.write("\n");
+            wr.write(x.toString(2).substring(0, 8));
         }
         wr.close();
+        xl = random.nextLong();
         x = BigInteger.valueOf(xl);
 
         wr = new FileWriter("lehmer_low.txt");
         System.out.println("Lehmer_gen(low)");
         for(int i = 0; i < bitsCount; i++) {
-            if(i % 125 == 0)
-                wr.write("\n");
-            wr.write(x.toString(2).substring(x.bitLength() - 8, x.bitLength()));
             x = x.multiply(a);
             x = x.add(c);
             x = x.mod(m);
+            if(i % 125 == 0)
+                wr.write("\n");
+            wr.write(x.toString(2).substring(x.bitLength() - 8, x.bitLength()));
         }
         wr.close();
     }

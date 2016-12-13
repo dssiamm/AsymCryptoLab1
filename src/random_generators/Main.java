@@ -1,5 +1,6 @@
 package random_generators;
 
+import tests.EquabilityTest;
 import tests.IndepTest;
 import tests.QuabilityTest;
 
@@ -33,49 +34,63 @@ public class Main {
         wr.close();
         QuabilityTest.testQuability("geffe.txt");
         IndepTest.testQuability("geffe.txt");
+        EquabilityTest.testQuability("geffe.txt");
 
         try {
             Built_in_gen.getBit();
             QuabilityTest.testQuability("built_in_gen.txt");
             IndepTest.testQuability("built_in_gen.txt");
+            EquabilityTest.testQuability("built_in_gen.txt");
 
             BlumBlumShub_gen.bitVersion();
             QuabilityTest.testQuability("blumblum_bit.txt");
             IndepTest.testQuability("blumblum_bit.txt");
+            EquabilityTest.testQuability("blumblum_bit.txt");
 
             BlumBlumShub_gen.byteVersion();
             QuabilityTest.testQuabilityByte("blumblum_byte.txt");
-            //IndepTest.testQuabilityByte("blumblum_byte.txt");
+            IndepTest.testQuabilityByte("blumblum_byte.txt");
+            EquabilityTest.testQuabilityByte("blumblum_byte.txt");
 
             Wolfram_gen.getBit();
             QuabilityTest.testQuability("wolf.txt");
             IndepTest.testQuability("wolf.txt");
+            EquabilityTest.testQuability("wolf.txt");
 
             Library_gen.getBits();
             QuabilityTest.testQuabilityByte("library.txt");
-            //IndepTest.testQuabilityByte("library.txt");
+            IndepTest.testQuabilityByte("library.txt");
+            EquabilityTest.testQuabilityByte("library.txt");
 
             L20_gen.getBits();
             QuabilityTest.testQuability("l20.txt");
             IndepTest.testQuability("l20.txt");
+            EquabilityTest.testQuability("l20.txt");
 
             L89_gen.getBits();
             QuabilityTest.testQuability("l89.txt");
             IndepTest.testQuability("l89.txt");
+            EquabilityTest.testQuability("l89.txt");
 
             BlumMicali_gen.bitVersion();
             QuabilityTest.testQuability("blummicali_bit.txt");
             IndepTest.testQuability("blummicali_bit.txt");
+            EquabilityTest.testQuability("blummicali_bit.txt");
 
             BlumMicali_gen.byteVersion();
-            QuabilityTest.testQuabilityByte("blummicali_byte.txt");
-            //IndepTest.testQuabilityByte("blummicali_byte.txt");
+            QuabilityTest.testQuabilityByte("blumblum_byte.txt");
+            IndepTest.testQuabilityByte("blumblum_byte.txt");
+            EquabilityTest.testQuabilityByte("blumblum_byte.txt");
 
             Lehmer_gen.getBit();
             QuabilityTest.testQuability("lehmer.txt");
             IndepTest.testQuability("lehmer.txt");
+            EquabilityTest.testQuability("lehmer.txt");
+
             QuabilityTest.testQuability("lehmer_low.txt");
             IndepTest.testQuability("lehmer_low.txt");
+            EquabilityTest.testQuability("lehmer_low.txt");
+
         }   catch (IOException e) {
             e.printStackTrace();
         }

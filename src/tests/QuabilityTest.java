@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class QuabilityTest {
     private static double avgCountOfBytes = 488.28125;
-    private static double avgCountOfBytess = 3921.5686;
+    private static double avgCountOfBytess = 3921.25;
 
     public static void testQuability(String fileName) throws IOException {
 
@@ -41,18 +41,18 @@ public class QuabilityTest {
         }
 
         double X = 0;
-        for (int i = 1; i < 255; i++) {
+        for (int i = 0; i < 256; i++) {
             X += Math.pow((countOfBytes[i] - avgCountOfBytes), 2) / avgCountOfBytes;
         }
 
         double Xa;
-        Xa = Math.sqrt(2 * 255) * 0.1 + 255;
+        Xa = Math.sqrt(2 * 255) * 1.2815515655 + 255;
         System.out.println(""+ X + " " + Xa);
 
-        Xa = Math.sqrt(2 * 255) * 0.01 + 255;
+        Xa = Math.sqrt(2 * 255) * 2.326634787 + 255;
         System.out.println(""+ X + " " + Xa);
 
-        Xa = Math.sqrt(2 * 255) * 0.05 + 255;
+        Xa = Math.sqrt(2 * 255) * 1.64485362 + 255;
         System.out.println(""+ X + " " + Xa);
     }
 
@@ -73,7 +73,7 @@ public class QuabilityTest {
                 }
                 if(!k){
                     kValueArr[arrInd] = Integer.parseInt(temp);
-                    for (int i = 0; i < 256; i++)
+                    for (int i = 1; i < 256; i++)
                         if (kValueArr[arrInd] == i)
                             countOfBytes[i]++;
                     arrInd++;
@@ -91,123 +91,23 @@ public class QuabilityTest {
         }
 
         double X = 0;
-        for (int i = 1; i < 255; i++) {
+        for (int i = 1; i < 256; i++) {
+            if(countOfBytes[i] == 0)
+                continue;
             X += Math.pow((countOfBytes[i] - avgCountOfBytess), 2) / avgCountOfBytess;
         }
 
         double Xa;
-        Xa = Math.sqrt(2 * 255) * 0.1 + 255;
+        Xa = Math.sqrt(2 * 255) * 1.2815515655 + 255;
         System.out.println(""+ X + " " + Xa);
 
-        Xa = Math.sqrt(2 * 255) * 0.01 + 255;
+        Xa = Math.sqrt(2 * 255) * 2.326634787 + 255;
         System.out.println(""+ X + " " + Xa);
 
-        Xa = Math.sqrt(2 * 255) * 0.05 + 255;
+        Xa = Math.sqrt(2 * 255) * 1.64485362 + 255;
         System.out.println(""+ X + " " + Xa);
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*Byte[] byteArr = new Byte[125000];
-        int k = 0;
-        int k1 = 0;
-        int kByte = 0;
-        String bytes = "";
-        String tempB = "";
-
-        try (FileReader fr = new FileReader(fileName)) {
-            int c;
-            while ((c = fr.read()) != -1) {
-                if((char) c == ' ' || (char) c == '\n')
-                    continue;
-                tempB += (char) c;
-                k++;
-                k1++;
-                if(k == 7) {
-                    byteArr[kByte] = Byte.parseByte(tempB, 2);
-                    k = 0;
-                    tempB = "";
-                    //kByte++;
-                }
-                if(k1 == 8)
-                    kByte++;
-            }
-        } catch (IOException e) {
-            System.out.println("I/O Error: " + e);
-        }
-
-        for(int i = 0; i < 10000; i++) {
-            System.out.print(byteArr[i] + " ");
-        }
-
-        System.out.println(bytes);*/
 
 }

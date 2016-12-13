@@ -62,7 +62,7 @@ public class BlumMicali_gen {
             if(i % 1000 == 0)
                 wr.write("\n");
             T = aValue.modPow(T, pValue);
-            for(int j = 1; j <= 256; j++) {
+            for(int j = 0; j <= 256; j++) {
                 if(kValue.compareTo(byteConst.multiply(T).divide(pValue.subtract(BigInteger.ONE))) == -1 &&
                         byteConst.multiply(T).divide(pValue.subtract(BigInteger.ONE)).compareTo(kValue.add(BigInteger.ONE)) == 0 ||
                                 byteConst.multiply(T).divide(pValue.subtract(BigInteger.ONE)).compareTo(kValue.add(BigInteger.ONE)) == -1) {

@@ -54,9 +54,9 @@ public class IndepTest {
         double countIbit = 0;
         double countJbit = 0;
 
-        for(int i = 1; i < 256; i++)
-            for(int j = 1; j < 256; j++) {
-                for(int m = 1; m < 256; m++) {
+        for(int i = 0; i < 256; i++)
+            for(int j = 0; j < 256; j++) {
+                for(int m = 0; m < 256; m++) {
                     countIbit += bytePar[i][m];
                     countJbit += bytePar[m][j];
                 }
@@ -70,24 +70,22 @@ public class IndepTest {
         a -= 1;
         X = n * a;
         double Xa;
-        Xa = Math.sqrt(2 * Math.pow(255, 2)) * 0.1 + Math.pow(255, 2);
+        Xa = Math.sqrt(2 * Math.pow(255, 2)) * 1.2815515655 + Math.pow(255, 2);
         System.out.println(""+ X + " " + Xa);
 
-        Xa = Math.sqrt(2 * Math.pow(255, 2)) * 0.01 + Math.pow(255, 2);
+        Xa = Math.sqrt(2 * Math.pow(255, 2)) * 2.326634787 + Math.pow(255, 2);
         System.out.println(""+ X + " " + Xa);
 
-        Xa = Math.sqrt(2 * Math.pow(255, 2)) * 0.05 + Math.pow(255, 2);
+        Xa = Math.sqrt(2 * Math.pow(255, 2)) * 1.64485362 + Math.pow(255, 2);
         System.out.println(""+ X + " " + Xa);
     }
 
     public static void testQuabilityByte(String fileName) throws IOException {
 
         int bytePar[][] = new int[256][256];
-        String tempByte1 = "1";
-        String tempByte2 = "2";
-        boolean change = true;
+        String tempByte1 = "";
+        String tempByte2 = "";
         boolean another = true;
-        int k = 0;
         int kk = 0;
         int byte1 = 0;
         int byte2 = 0;
@@ -96,31 +94,29 @@ public class IndepTest {
             int c;
             while ((c = fr.read()) != -1) {
                 if ((char) c == ' ' || (char) c == '\n') {
-                    change = false;
-                    continue;
-                }
-                if(!change){
-                    if(another) {
+                    if(another && !tempByte1.equals("")) {
                         another = false;
                         byte1 = Integer.parseInt(tempByte1);
-                        tempByte1 = "";
                         kk++;
                         if (kk == 1000000)
                             break;
-                    } else {
+                        continue;
+                    }
+                    if(!another && !tempByte2.equals("")){
                         another = true;
                         byte2 = Integer.parseInt(tempByte2);
+                        tempByte1 = "";
                         tempByte2 = "";
                         bytePar[byte1][byte2]++;
                         kk++;
                         if (kk == 1000000)
                             break;
+                        continue;
                     }
                 }
-                change = true;
-                if(another)
+                if(another && (char) c != ' ' && (char) c != '\n')
                     tempByte1 += (char) c;
-                else
+                if(!another && (char) c != ' ' && (char) c != '\n')
                     tempByte2 += (char) c;
             }
         } catch (IOException e) {
@@ -133,13 +129,15 @@ public class IndepTest {
         double countIbit = 0;
         double countJbit = 0;
 
-        for(int i = 1; i < 256; i++)
-            for(int j = 1; j < 256; j++) {
-                for(int m = 1; m < 256; m++) {
+        for(int i = 0; i < 256; i++)
+            for(int j = 0; j < 256; j++) {
+                for(int m = 0; m < 256; m++) {
                     countIbit += bytePar[i][m];
                     countJbit += bytePar[m][j];
                 }
 
+                if(countIbit == 0  || countJbit == 0 )
+                    continue;
                 a += Math.pow(bytePar[i][j], 2) / ( countIbit * countJbit );
                 countIbit = 0;
                 countJbit = 0;
@@ -149,13 +147,13 @@ public class IndepTest {
         a -= 1;
         X = n * a;
         double Xa;
-        Xa = Math.sqrt(2 * Math.pow(255, 2)) * 0.1 + Math.pow(255, 2);
+        Xa = Math.sqrt(2 * Math.pow(255, 2)) * 1.2815515655 + Math.pow(255, 2);
         System.out.println(""+ X + " " + Xa);
 
-        Xa = Math.sqrt(2 * Math.pow(255, 2)) * 0.01 + Math.pow(255, 2);
+        Xa = Math.sqrt(2 * Math.pow(255, 2)) * 2.326634787 + Math.pow(255, 2);
         System.out.println(""+ X + " " + Xa);
 
-        Xa = Math.sqrt(2 * Math.pow(255, 2)) * 0.05 + Math.pow(255, 2);
+        Xa = Math.sqrt(2 * Math.pow(255, 2)) * 1.64485362 + Math.pow(255, 2);
         System.out.println(""+ X + " " + Xa);
     }
 }
